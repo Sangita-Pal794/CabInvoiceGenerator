@@ -4,6 +4,9 @@
 package CabInvoiceGenerator;
 
 import org.junit.Test;
+
+import com.bridgelabz.cabinvoicegenerator.Library;
+
 import static org.junit.Assert.*;
 
 public class LibraryTest {
