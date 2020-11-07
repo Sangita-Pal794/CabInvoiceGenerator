@@ -4,8 +4,10 @@ import java.util.ArrayList;
 public class User {
 	String userid;
     private ArrayList<Ride> rideList;
-
-    public User(String userid ) { //initializes a userid and a rideList that will be used to store multiple rides for the userid
+    
+//initializes a userid and a rideList that will be used to store multiple rides for the userid
+    
+    public User(String userid ) { 
         this.userid = userid;
         this.rideList = new ArrayList<>();
     }
@@ -14,7 +16,7 @@ public class User {
         return rideList;
     }
 
-    public void addRide(double distance , int time) {  //adds ride details to rideList
-        this.rideList.add(new Ride(distance , time));
+    public void addRide(double distance , int time , String category) {  //adds ride details to rideList
+        this.rideList.add(new Ride(distance , time , category));
     }
 }

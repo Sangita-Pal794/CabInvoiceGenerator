@@ -28,12 +28,25 @@ public class CabInvoiceGeneratorTest {
     public void givenMultipleRides_ShoulReturnIvoiceSummary() {
         CabInvoiceGenerator cabInvoiceGenerator = new CabInvoiceGenerator();
         User newUser = new User("Piya");
-        newUser.addRide(2.0 , 5);
-        newUser.addRide(0.5 , 5);
-        newUser.addRide(0.1 , 1);
+        newUser.addRide(2.0 , 5 , "normal");
+        newUser.addRide(0.5 , 5 , "normal");
+        newUser.addRide(0.1 , 1 , "normal");
         ArrayList<Ride> rideListForId = cabInvoiceGenerator.getListOfRides(newUser);
         InvoiceSummary invoiceSummary = cabInvoiceGenerator.calculateFare(rideListForId);
         InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(3 , 40.0);
+        Assert.assertEquals(expectedInvoiceSummary , invoiceSummary);
+    }
+    
+    @Test
+    public void givenUserIdAndPremiumRideCategory_ShouldReturnInvoiceSummary() {
+        CabInvoiceGenerator cabInvoiceGenerator = new CabInvoiceGenerator();
+        User newUser = new User("Piya");
+        newUser.addRide(2.0 , 5 , "premium");
+        newUser.addRide(0.5 , 5 , "premium");
+        newUser.addRide(0.1 , 1 , "normal");
+        ArrayList<Ride> rideListForId = cabInvoiceGenerator.getListOfRides(newUser);
+        InvoiceSummary invoiceSummary = cabInvoiceGenerator.calculateFare(rideListForId);
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(3 , 65);
         Assert.assertEquals(expectedInvoiceSummary , invoiceSummary);
     }
 }
